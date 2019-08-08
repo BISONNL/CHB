@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- Copyright: Dit document is eigendom van Platform BISON onder de Stichting Connekt,                                                 -->
-<!--            en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl,                                                  -->
-<!--            zie http://creativecommons.org/licences/by-nd/3.0/nl                                                                    -->
-<!-- Opmerking: XSD is gebaseerd op BISON fysieke haltestructuur en toegankelijkheid, functioneel document, v8.3.0                      -->
-<!-- Versie:  1.0 (definitief) (24-11-2014)                                                                                             -->
-<!--          1.1 15-01-2015                                                                                                            -->
-<!--          1.2 12-03-2015                                                                                                            -->
-<!--          1.3 06-10-2015                                                                                                            -->
-<!--          1.4 08-06-2016                                                                                                            -->
-<!--          1.5 07-12-2017                                                                                                            -->
-<!-- Historie:                                                                                                                          -->
-<!--          1.0: definitieve versie bij release 8.2.0.0                                                                               -->
-<!--          1.1: onvolkomenheden aangepast:                                                                                           -->
-<!--               ==> meerdere modaliteiten per quays: quaytransportmodes: <xs:element ref="transportmodedata" maxOccurs="unbounded"/> -->
-<!--               ==> Zowel bij Quay als bij Stopplace kunnen meerdere fotoverwijzingen worden opgenomen, ==> maxOccurs="unbounded" /> -->
-<!--          1.2: Rfc conform memo 20150218 Memo - uitbreiden enum KV halte voor haltetaxi vraaggestuurd vervoer verwerkt:             -->
-<!--                   enum Transportmode uitgebreid met <xs:enumeration value="taxi"/>                                                 -->
-<!--                   enum Quaytype uitgebreid met <xs:enumeration value="demandresponsive"/>                                          -->
-<!--          1.3: Rfc conform memo 20150924 Changes haltestandaard verwerkt                                                            -->
-<!--                   enum StopPlaceType uitgebreid met <xs:enumeration value="combiMetroTram"/>                                       -->
-<!--                   enum Visuallyaccessible uitgebreid met <xs:enumeration value="U"/>                                               -->
-<!--                   enum Disabledaccessible uitgebreid met <xs:enumeration value="U"/>                                               -->
-<!--          1.3: definitieve versie bij release 8.2.1.0                                                                               -->
-<!--                  quay-level is alleen nog opgenomen bij quaylocationdata, verwijderd bij quayaccessibilityoptions (was redundant)  -->
-<!--          1.4: gecorrigeerde definitieve versie bij release 8.2.1.1 n.a.v. incidentmelding dat export niet voldoet aan XSD          -->
-<!--                onjuiste namespace verwijzing aangepast: xmlns:ns1="http://bison.connekt.nl/tmi8/chb/msg/v1.3" vervangen door:      -->
-<!--                xmlns="http://bison.connekt.nl/tmi8/chb/msg/v1.4"                                                                   -->
-<!--                baylength, ook waarde 0 is toegestaan (bijv. bij alleen haltepaal in gras) ==> minInclusive value="0"               -->
-<!--                bayentranceangles en bayexitangles, max. waarde nu 100 (was 10 meter), min. waarde mag 0 zijn.                      -->
-<!--           1.5: BISON versie 8.3.0: verwijzing naar logo/symbool van een quay, stopplace of place toegevoegd.                       -->
-<!--                Hierbij dus ook namespace gewijzigd in "http://bison.connekt.nl/tmi8/chb/msg/v1.5"                                  -->
-<!--                                                                                                                                    -->
+<!-- Copyright:	Dit document is eigendom van Platform BISON onder de Stichting Connekt,													-->
+<!--			en wordt gepubliceerd onder de Creative Commons Licentie by-nd/3.0/nl, 													-->
+<!--			zie http://creativecommons.org/licences/by-nd/3.0/nl				   													-->
+<!-- Opmerking: XSD is gebaseerd op BISON fysieke haltestructuur en toegankelijkheid, functioneel document, v8.3.1						-->
+<!-- Versie:  1.0 (definitief) (24-11-2014)																								-->
+<!--		  1.1 15-01-2015																											-->
+<!--		  1.2 12-03-2015																											-->
+<!--		  1.3 06-10-2015																											-->
+<!--		  1.4 08-06-2016																											-->
+<!--		  1.5 07-12-2017																											-->
+<!--		  1.6 07-09-2018																											-->
+<!-- Historie:																															-->
+<!--		  1.0: definitieve versie bij release 8.2.0.0 								  												-->
+<!--		  1.1: onvolkomenheden aangepast: 												 											-->
+<!--			   ==> meerdere modaliteiten per quays: quaytransportmodes: <xs:element ref="transportmodedata" maxOccurs="unbounded"/>	-->
+<!--		  	   ==> Zowel bij Quay als bij Stopplace kunnen meerdere fotoverwijzingen worden opgenomen, ==> maxOccurs="unbounded”/>  -->
+<!--		  1.2: Rfc conform memo 20150218 Memo - uitbreiden enum KV halte voor haltetaxi vraaggestuurd vervoer verwerkt:				-->
+<!--				   enum Transportmode uitgebreid met <xs:enumeration value="taxi"/>													-->
+<!--				   enum Quaytype uitgebreid met <xs:enumeration value="demandresponsive"/>											-->
+<!--		  1.3: Rfc conform memo 20150924 Changes haltestandaard verwerkt															-->
+<!--				   enum StopPlaceType uitgebreid met <xs:enumeration value="combiMetroTram"/>										-->
+<!--				   enum Visuallyaccessible uitgebreid met <xs:enumeration value="U"/>												-->
+<!--				   enum Disabledaccessible uitgebreid met <xs:enumeration value="U"/>												-->
+<!--		  1.3: definitieve versie bij release 8.2.1.0 								  												-->
+<!--			   quay-level is alleen nog opgenomen bij quaylocationdata, verwijderd bij quayaccessibilityoptions (was redundant)		-->
+<!--		  1.4: gecorrigeerde definitieve versie bij release 8.2.1.1 n.a.v. incidentmelding dat export niet voldoet aan XSD			-->
+<!--		  	   onjuiste namespace verwijzing aangepast: xmlns:ns1="http://bison.connekt.nl/tmi8/chb/msg/v1.3" vervangen door:		-->
+<!--		  	   xmlns="http://bison.connekt.nl/tmi8/chb/msg/v1.4" 																	-->
+<!-- 			   baylength, ook waarde 0 is toegestaan (bijv. bij alleen haltepaal in gras) ==> minInclusive value=“0”				-->
+<!-- 			   bayentranceangles en bayexitangles, max. waarde nu 100 (was 10 meter), min. waarde mag 0 zijn.						-->
+<!-- 		  1.5: BISON versie 8.3.0: verwijzing naar logo/symbool van een quay, stopplace of place toegevoegd.						-->
+<!-- 			   Hierbij dus ook namespace gewijzigd in "http://bison.connekt.nl/tmi8/chb/msg/v1.5"									-->
+<!-- 		  1.6: BISON versie 8.3.0: quayshapeType 'bermhalte' toegevoegd.															-->
+<!-- 			   Namespace terug gewijzigd in "http://bison.connekt.nl/tmi8/chb/msg"													-->
+<!--		  																															-->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/chb/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/chb/core" xmlns="http://bison.connekt.nl/tmi8/chb/msg/v1.5" targetNamespace="http://bison.connekt.nl/tmi8/chb/msg/v1.5" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/chb/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/chb/core" xmlns="http://bison.connekt.nl/tmi8/chb/msg" targetNamespace="http://bison.connekt.nl/tmi8/chb/msg" elementFormDefault="qualified">
 	<xs:import namespace="http://bison.connekt.nl/tmi8/chb/core" schemaLocation="chb-core.xsd"/>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- CHB export                                                                        -->
-	<!-- Centraal Halte Bestand, bestand waarin gegevens van alle fysieke haltes           -->
-	<!-- (en stations) in Nederland zijn opgenomen. De gegevens uit het CHB worden als     -->
-	<!-- open data via de NDOV-loketten aan afnemers beschikbaar gesteld volgens de        -->
-	<!-- structuur zoals opgenomen in deze XSD.                                            -->
+	<!-- CHB export 																	   -->
+	<!-- Centraal Halte Bestand, bestand waarin gegevens van alle fysieke haltes 		   -->
+	<!-- (en stations) in Nederland zijn opgenomen. De gegevens uit het CHB worden als 	   -->
+	<!-- open data via de NDOV-loketten aan afnemers beschikbaar gesteld volgens de 	   -->
+	<!-- structuur zoals opgenomen in deze XSD.											   -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="export">
 		<xs:complexType>
@@ -52,13 +55,13 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Stopplaces                                                                        -->
-	<!-- Een StopPlace is een plaats opgebouwd uit een of meerdere locaties waar           -->
+	<!-- Stopplaces																		   -->
+	<!-- Een StopPlace is een plaats opgebouwd uit één of meerdere locaties waar  		   -->
 	<!-- voertuigen mogen stoppen en reizigers kunnen in en/of uitstappen. Een StopPlace   -->
-	<!-- heeft een of meer bij de reiziger bekende namen. De haltes behorend tot een       -->
-	<!-- StopPlace liggen in eenzelfde straat/plein, op eenzelfde level (= niveau qua      -->
-	<!-- hoogteverschil, bijv. -2, -1, 0, 1, 2 etc.). Vanaf een halte zijn de andere       -->
-	<!-- haltes behorend tot de StopPlace zichtbaar.                                       -->
+	<!-- heeft één of meer bij de reiziger bekende namen. De haltes behorend tot een	   -->
+	<!-- StopPlace liggen in eenzelfde straat/plein, op eenzelfde level (= niveau qua	  -->
+	<!-- hoogteverschil, bijv. -2, -1, 0, 1, 2 etc.). Vanaf een halte zijn de andere	   -->
+	<!-- haltes behorend tot de StopPlace zichtbaar.									   -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="stopplaces">
 		<xs:complexType>
@@ -94,14 +97,14 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Quays, binnen stopplace                                                           -->
-	<!-- Een QUAY is een plaats, zoals een perron, berm, kade, steiger, etc., waar         -->
+	<!-- Quays, binnen stopplace														   -->
+	<!-- Een QUAY is een plaats, zoals een perron, berm, kade, steiger, etc., waar 		   -->
 	<!-- reizigers toegang hebben tot het OV-netwerk. Iedere plaats waar een voertuig of   -->
 	<!-- halteert is een QUAY, een QUAY is altijd een plaats waaraan een voertuig halteert -->
-	<!-- kan halteren. Op landelijke wegen komt het voor dat aan een zijde van de straat   -->
+	<!-- kan halteren. Op landelijke wegen komt het voor dat aan één zijde van de straat   -->
 	<!-- een haltepaal staat, die ook wordt gebruikt om de vertrekken aan de overzijde van -->
-	<!-- de straat aan te duiden. In deze situatie is er sprake van 2 afzonderlijke        -->
-	<!-- instapplaatsen, derhalve dan ook 2 QUAYS.                                         -->
+	<!-- de straat aan te duiden. In deze situatie is er sprake van 2 afzonderlijke 	   -->
+	<!-- instapplaatsen, derhalve dan ook 2 QUAYS.										   -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="quays">
 		<xs:complexType>
@@ -351,7 +354,7 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Stopplace kenmerken                                                               -->
+	<!-- Stopplace kenmerken															   -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="stopplacelocation">
 		<xs:complexType>
@@ -487,8 +490,8 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Places                                                                            -->
-	<!-- Een gebied waarbinnen meerdere Stopplaces vallen.                                 -->
+	<!-- Places																			-->
+	<!-- Een gebied waarbinnen meerdere Stopplaces vallen. 								   -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="places">
 		<xs:complexType>
@@ -512,8 +515,8 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Dataowners                                                                        -->
-	<!-- Data-eigenaar van een object                                                      -->
+	<!-- Dataowners 																	   -->
+	<!-- Data-eigenaar van een object													   -->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:element name="dataowners">
 		<xs:complexType>
@@ -532,7 +535,7 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	<!-- Message property types                                                            -->
+	<!-- Message property types															-->
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<xs:simpleType name="placecodeassignment">
 		<xs:annotation>
@@ -589,7 +592,7 @@
 	</xs:element>
 	<xs:element name="daowtype">
 		<xs:annotation>
-			<xs:documentation>DataOwnerType: Dit veld mag een van de volgende waarden bevatten: ROOW (Road Owner) COPR (Concession Provider), PUCO (Public transport Company), INT (Integrator) </xs:documentation>
+			<xs:documentation>DataOwnerType: Dit veld mag één van de volgende waarden bevatten: ROOW (Road Owner) COPR (Concession Provider), PUCO (Public transport Company), INT (Integrator) </xs:documentation>
 		</xs:annotation>
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -670,7 +673,7 @@
 	</xs:element>
 	<xs:element name="visuallyaccessible">
 		<xs:annotation>
-			<xs:documentation>Geeft aan of de quay/stopplace is aangepast voor visueel beperkten. Dit veld mag een van de volgende waarden bevatten: Y(es), N(o), T(emporary not), U(nknown)</xs:documentation>
+			<xs:documentation>Geeft aan of de quay/stopplace is aangepast voor visueel beperkten. Dit veld mag één van de volgende waarden bevatten: Y(es), N(o), T(emporary not), U(nknown)</xs:documentation>
 		</xs:annotation>
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -683,7 +686,7 @@
 	</xs:element>
 	<xs:element name="disabledaccessible">
 		<xs:annotation>
-			<xs:documentation>Geeft aan of de quay/stopplace is aangepast voor motorisch beperkten. Dit veld mag een van de volgende waarden bevatten: Y(es), N(o), T(emporary not), U(nknown)(</xs:documentation>
+			<xs:documentation>Geeft aan of de quay/stopplace is aangepast voor motorisch beperkten. Dit veld mag één van de volgende waarden bevatten: Y(es), N(o), T(emporary not), U(nknown)(</xs:documentation>
 		</xs:annotation>
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -734,7 +737,7 @@
 	</xs:element>
 	<xs:element name="transportmode">
 		<xs:annotation>
-			<xs:documentation>Dit veld mag een van de volgende waarden bevatten: rail,metro,tram,bus,ferry,taxi</xs:documentation>
+			<xs:documentation>Dit veld mag één van de volgende waarden bevatten: rail,metro,tram,bus,ferry,taxi</xs:documentation>
 		</xs:annotation>
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -770,7 +773,7 @@
 	</xs:element>
 	<xs:element name="quayshapetype">
 		<xs:annotation>
-			<xs:documentation>Vorm van bushalte, dit veld mag een van de volgende waarden bevatten: unknown,langshalte,uitgestoken langshalte,haltehaven,semi-haltehaven</xs:documentation>
+			<xs:documentation>Vorm van bushalte. Dit veld mag één van de volgende waarden bevatten: unknown,langshalte,uitgestoken langshalte,haltehaven,semi-haltehaven,bermhalte</xs:documentation>
 		</xs:annotation>
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
@@ -779,6 +782,7 @@
 				<xs:enumeration value="uitgestoken langshalte"/>
 				<xs:enumeration value="haltehaven"/>
 				<xs:enumeration value="semi-haltehaven"/>
+				<xs:enumeration value="bermhalte"/>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
