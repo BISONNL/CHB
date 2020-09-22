@@ -1,6 +1,6 @@
 # CHB - Fysieke haltestructuur en toegankelijkheid
 
-*inclusief BISON PassengerStopAssignment*
+*Export van de haltegegevens uit het Centraal Haltebestand (CHB)*
 
 De documentatie is te vinden op de [BISON website](http://bison.dova.nu/standaarden/CHB).
 
