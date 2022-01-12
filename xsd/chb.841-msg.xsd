@@ -32,8 +32,10 @@
 <!--        8.4.0: NeTEx Id's toegevoegd conform structuur: [codespace]:[type]:[identificatie], bijvoorbeeld:                            -->
 <!--                 CHB:StopPlace:32005215, CHB:Quay:54000480, CHB:GroupOfStopPlaces:llzm                                               -->
 <!--               Toegevoegd: wheelchairAccess, stepFreeAccess en visuallyImpairedAccess conform NeTEx limitationStatusEnum.            -->
+<!--        8.4.1: Containers stopplaces, places en dataowners optioneel, zodat deel-exports ook mogelijk zijn met dit xsd,              -->
+<!--               Lengte quayname 45 i.p.v. 100 karakters; minimale perronhoogte 0 ook toegestaan; QuayType en StopPlaceType 'bridge'.  -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/chb/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/chb/core" xmlns="http://bison.connekt.nl/tmi8/chb/msg" targetNamespace="http://bison.connekt.nl/tmi8/chb/msg" elementFormDefault="qualified" version="8.4.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/chb/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/chb/core" xmlns="http://bison.connekt.nl/tmi8/chb/msg" targetNamespace="http://bison.connekt.nl/tmi8/chb/msg" elementFormDefault="qualified" version="8.4.1">
 	<xs:import namespace="http://bison.connekt.nl/tmi8/chb/core" schemaLocation="chb-core.xsd"/>
 	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 	<!-- CHB export                                                                        -->
@@ -45,9 +47,9 @@
 	<xs:element name="export">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="stopplaces" maxOccurs="unbounded"/>
-				<xs:element ref="places" maxOccurs="unbounded"/>
-				<xs:element ref="dataowners" maxOccurs="unbounded"/>
+				<xs:element ref="stopplaces" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="places" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dataowners" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -673,6 +675,7 @@
 				<xs:enumeration value="tramStation"/>
 				<xs:enumeration value="combiTramBus"/>
 				<xs:enumeration value="combiMetroTram"/>
+				<xs:enumeration value="bridge"/>
 				<xs:enumeration value="other"/>
 			</xs:restriction>
 		</xs:simpleType>
@@ -928,7 +931,7 @@
 			<xs:restriction base="xs:decimal">
 				<xs:totalDigits value="4"/>
 				<xs:fractionDigits value="2"/>
-				<xs:minExclusive value="0"/>
+				<xs:minInclusive value="0"/>
 				<xs:maxExclusive value="10"/>
 			</xs:restriction>
 		</xs:simpleType>
@@ -1378,7 +1381,7 @@
 		</xs:annotation>
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
-				<xs:maxLength value="100"/>
+				<xs:maxLength value="45"/>
 				<xs:minLength value="1"/>
 			</xs:restriction>
 		</xs:simpleType>
@@ -1499,6 +1502,7 @@
 				<xs:enumeration value="regular"/>
 				<xs:enumeration value="temporary"/>
 				<xs:enumeration value="demandresponsive"/>
+				<xs:enumeration value="bridge"/>
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
