@@ -34,6 +34,8 @@
 <!--               Toegevoegd: wheelchairAccess, stepFreeAccess en visuallyImpairedAccess conform NeTEx limitationStatusEnum.            -->
 <!--        8.4.1: Containers stopplaces, places en dataowners optioneel, zodat deel-exports ook mogelijk zijn met dit xsd,              -->
 <!--               Lengte quayname 45 i.p.v. 100 karakters; minimale perronhoogte 0 ook toegestaan; QuayType en StopPlaceType 'bridge'.  -->
+<!--        8.4.2: Bepaling van stepFreeAccess en visuallyImpairedAccess in overeenstemming gebracht met EU NeTEx Accessibility.         -->
+<!--                                                                                                                                     -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/chb/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/chb/core" xmlns="http://bison.connekt.nl/tmi8/chb/msg" targetNamespace="http://bison.connekt.nl/tmi8/chb/msg" elementFormDefault="qualified" version="8.4.1">
 	<xs:import namespace="http://bison.connekt.nl/tmi8/chb/core" schemaLocation="chb-core.xsd"/>
@@ -708,13 +710,11 @@
 			<xs:documentation>Geeft aan of de quay/stopplace toegankelijk is voor reizigers met een visuele beperking. 
 			Wordt afgeleid conform de volgende kenmerken en voorwaarden:
 			voor alle modaliteiten (bus, tram, metro, boot, trein enz.)
-			fulllengthguideline = Y
-			AND
 			guidelinestopplaceconnection = Y
 			AND
-			((0,2 >= heightwithenvironment) OR (heightwithenvironment > 0,2 AND ((ramp = Y AND rampwidth >= 1,2) OR lift = Y)))
-			AND 
-			only for 'bus' groundsurfaceindicator = Y   (instapmarkering alleen op bushaltes)
+			( fulllengthguideline = Y 
+				OR 
+			  groundsurfaceindicator = Y )  (instapmarkering alleen op bushaltes)
 			Dit veld mag één van de volgende waarden bevatten conform de NeTEx LimitationStatusEnumeration: true, false, unknown.</xs:documentation>
 		</xs:annotation>
 		<xs:simpleType>
@@ -739,8 +739,6 @@
 			<xs:documentation>Geeft aan of de quay/stopplace drempelvrij bereikbaar is. 
 			Wordt afgeleid conform de volgende kenmerken en voorwaarden:
 			voor alle modaliteiten (bus, tram, metro, boot, trein, enz.)
-			boardingpositionwidth OR alightingpositionwidth >= 1,5
-			AND
 			narrowestpassagewidth >= 0,9
 			AND
 			stopplaceaccessroute = Y 
