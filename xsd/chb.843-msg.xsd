@@ -35,6 +35,7 @@
 <!--        8.4.1: Containers stopplaces, places en dataowners optioneel, zodat deel-exports ook mogelijk zijn met dit xsd,              -->
 <!--               Lengte quayname 45 i.p.v. 100 karakters; minimale perronhoogte 0 ook toegestaan; QuayType en StopPlaceType 'bridge'.  -->
 <!--        8.4.2: Bepaling van stepFreeAccess en visuallyImpairedAccess in overeenstemming gebracht met EU NeTEx Accessibility.         -->
+<!--        8.4.3: Veld 'dynamicStopAssignment' toegevoegd aan StopPlace t.b.v. Dynamische Perrontoewijzing.                             -->
 <!--                                                                                                                                     -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tmi8="http://bison.connekt.nl/tmi8/chb/msg" xmlns:tmi8c="http://bison.connekt.nl/tmi8/chb/core" xmlns="http://bison.connekt.nl/tmi8/chb/msg" targetNamespace="http://bison.connekt.nl/tmi8/chb/msg" elementFormDefault="qualified" version="8.4.1">
@@ -94,6 +95,7 @@
 				<xs:element ref="stopplaceremarks" minOccurs="0"/>
 				<xs:element ref="stopplacephotos" minOccurs="0"/>
 				<xs:element ref="iconuri" minOccurs="0"/>
+				<xs:element name="dynamicstopassignment" type="xs:boolean" minOccurs="0" default="false"/>
 			</xs:sequence>
 			<xs:attribute name="placecode" type="placecodeassignment"/>
 		</xs:complexType>
